@@ -18,7 +18,6 @@
 ### Association
 - has_many  :items
 - has_many  :purchases
-- has_one   :buyer_information
 
 ## itemsテーブル（出品商品管理機能）
 
@@ -42,29 +41,28 @@
 
 | Column               | Type           | Options                             |
 | -------------------- | -------------- | ----------------------------------- |
-| purchase_date        | date           | null: false                         |
 | user                 | references     | null: false, foreign_key            |
 | item                 | references     | null: false, foreign_key            |
-| buyer_information    | references     | null: false, foreign_key            |
 
 ### Association
 - belongs_to  :user
 - belongs_to  :item
-- belongs_to  :buyer_information
+- has_one     :buyer_information
 
 ## buyer_information（購入者情報管理機能）
 
 | Column               | Type           | Options                             |
 | -------------------- | -------------- | ----------------------------------- |
-| postal_code          | integer        | null: false                         |
+| postal_code          | string         | null: false                         |
 | prefectures          | string         | null: false                         |
 | municipality         | string         | null: false                         |
 | address              | string         | null: false                         |
+| building             | string         |                                     |
 | phone_number         | integer        | null: false                         |
 | purchase             | references     | null: false, foreign_key            |
 
 ### Association
-- has_one     :purchase
+- belongs_to  :purchase
 
 
 This README would normally document whatever steps are necessary to get the
