@@ -46,6 +46,7 @@
 | purchase_date        | date           | null: false                         |
 | user                 | references     | null: false, foreign_key            |
 | item                 | references     | null: false, foreign_key            |
+| buyer_information    | references     | null: false, foreign_key            |
 
 ### Association
 - belongs_to  :user
@@ -61,11 +62,9 @@
 | municipality         | string         | null: false                         |
 | address              | string         | null: false                         |
 | phone_number         | integer        | null: false                         |
-| user                 | references     | null: false, foreign_key            |
 | purchase             | references     | null: false, foreign_key            |
 
 ### Association
-- belongs_to  :user
 - has_one     :purchase
 
 
