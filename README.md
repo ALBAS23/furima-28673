@@ -7,7 +7,7 @@
 | Column               | Type           | Options                             |
 | -------------------- | -------------- | ----------------------------------- |
 | nickname             | string         | null: false                         |
-| email                | string         | null: false                         |
+| email                | string         | null: false, unique: true           |
 | encrypted_password   | string         | null: false                         |
 | last_name            | string         | null: false                         |
 | first_name           | string         | null: false                         |
@@ -23,7 +23,7 @@
 ## itemsテーブル（出品商品管理機能）
 
 | Column               | Type           | Options                             |
-| -------------------- | -------------- | ----------------------------------- |
+| -------------------- | -------------- | ----------------------------------- | 
 | name                 | string         | null: false                         |
 | explanation          | text           | null: false                         |
 | category             | integer        | null: false                         |
