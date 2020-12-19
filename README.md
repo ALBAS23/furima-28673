@@ -25,11 +25,11 @@
 | -------------------- | -------------- | ----------------------------------- | 
 | name                 | string         | null: false                         |
 | explanation          | text           | null: false                         |
-| category             | integer        | null: false                         |
-| status               | integer        | null: false                         |
-| delivery-fee         | integer        | null: false                         |
-| shipment-source      | integer        | null: false                         |
-| shipment-day         | integer        | null: false                         |
+| category_id          | integer        | null: false                         |
+| status_id            | integer        | null: false                         |
+| delivery_fee_id      | integer        | null: false                         |
+| shipment_source _id  | integer        | null: false                         |
+| shipment_day_id      | integer        | null: false                         |
 | price                | integer        | null: false                         |
 | user                 | references     | null: false, foreign_key            |
 
