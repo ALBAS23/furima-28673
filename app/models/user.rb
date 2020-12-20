@@ -1,3 +1,4 @@
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -9,8 +10,10 @@ class User < ApplicationRecord
   with_options presence: true do
     columns.each do |column|
       validates column
+    end
   end
 
-  validates :password, format: {with: /\A[a-z\d]{6}+\z/i, message: "半角英数字で入力してください"}
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates :password, format: {with: PASSWORD_REGEX, message: "半角英数字を両方含んで入力してください"}
   
 end
