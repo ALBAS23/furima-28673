@@ -1,4 +1,3 @@
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -13,7 +12,6 @@ class User < ApplicationRecord
     end
   end
 
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates :password, format: {with: PASSWORD_REGEX, message: "半角英数字を両方含んで入力してください"}
-  
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+  validates :password, format: { with: PASSWORD_REGEX, message: '半角英数字を両方含んで入力してください' }
 end
