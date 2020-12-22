@@ -14,4 +14,14 @@ class User < ApplicationRecord
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates :password, format: { with: PASSWORD_REGEX, message: '半角英数字を両方含んで入力してください' }
+
+  names = [:last_name, :first_name]
+  names.each do |name|
+    validates name, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: '全角文字で入力してください'}
+  end
+
+  kanas = [:last_name_kana, :first_name_kana]
+  kanas.each do |kana|
+    validates kana, format: { with: /\A[ァ-ヶ]+\z/, message: '全角カナで入力してください'}
+  end
 end
