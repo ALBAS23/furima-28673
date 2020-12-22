@@ -88,6 +88,26 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Email has already been taken')
       end
+      it 'last_nameが半角文字の場合、登録できない' do
+        @user.last_name = 'ﾊﾝｶｸ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name 全角文字で入力してください')
+      end
+      it 'first_nameが半角文字の場合、登録できない' do
+        @user.first_name = 'ﾊﾝｶｸ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name 全角文字で入力してください')
+      end
+      it 'last_name_kanaが全角カタカナ以外の場合、登録できない' do
+        @user.last_name_kana = '山田'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name kana 全角カナで入力してください')
+      end
+      it 'first_name_kanaが全角カタカナ以外の場合、登録できない' do
+        @user.first_name_kana = 'たいが'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name kana 全角カナで入力してください')
+      end
     end
   end
 end
