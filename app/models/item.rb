@@ -8,6 +8,8 @@ class Item < ApplicationRecord
 
   belongs_to :user
 
+  has_one_attached  :image
+
   columns = [name, explanation, category_id, status_id, delivery_fee_id, shipment_prefecture_id, shipment_day_id, price]
 
   with_options presence: true do 
