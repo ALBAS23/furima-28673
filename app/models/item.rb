@@ -10,7 +10,7 @@ class Item < ApplicationRecord
 
   has_one_attached  :image
 
-  columns = [:name, :explanation, :category_id, :status_id, :delivery_fee_id, :shipment_prefecture_id, :shipment_day_id, :price] 
+  columns = [:name, :image, :explanation, :category_id, :status_id, :delivery_fee_id, :shipment_prefecture_id, :shipment_day_id, :price] 
 
   with_options presence: true do 
     columns.each do |column|
