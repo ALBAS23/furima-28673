@@ -17,11 +17,11 @@ class User < ApplicationRecord
 
   names = [:last_name, :first_name]
   names.each do |name|
-    validates name, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: '全角文字で入力してください'}
+    validates name, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: '全角文字で入力してください' }
   end
 
   kanas = [:last_name_kana, :first_name_kana]
   kanas.each do |kana|
-    validates kana, format: { with: /\A[ァ-ヶ]+\z/, message: '全角カナで入力してください'}
+    validates kana, format: { with: /\A[ァ-ヶ]+\z/, message: '全角カナで入力してください' }
   end
 end
