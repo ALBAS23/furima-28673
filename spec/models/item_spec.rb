@@ -28,13 +28,13 @@ RSpec.describe Item, type: :model do
       end
       # 5
       it 'priceの値が9,999,999以下の場合、登録できる' do
-        @item.price = 9999999
+        @item.price = 9_999_999
         expect(@item).to be_valid
       end
     end
-    
+
     context '商品登録が失敗しない場合' do
-      # 1 
+      # 1
       it '商品画像（image）がない場合、登録できない' do
         @item.image = nil
         @item.valid?
@@ -50,31 +50,31 @@ RSpec.describe Item, type: :model do
       it 'カテゴリー（category_id）が選択されていない場合（category_id = 1 の場合）、登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Category must be other than 1"
+        expect(@item.errors.full_messages).to include 'Category must be other than 1'
       end
       # 4
       it '商品の状態（status_id）が選択されていない場合（status_id = 1 の場合）、登録できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Status must be other than 1"
+        expect(@item.errors.full_messages).to include 'Status must be other than 1'
       end
       # 5
       it '配送料の負担（delivery_fee_id）が選択されていない場合（delivery_fee_id = 1 の場合）、登録できない' do
         @item.delivery_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Delivery fee must be other than 1"
+        expect(@item.errors.full_messages).to include 'Delivery fee must be other than 1'
       end
       # 6
       it '配送元の地域（shipment_prefecture_id）が選択されていない場合（shipment_prefecture_id = 1 の場合）、登録できない' do
         @item.shipment_prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Shipment prefecture must be other than 1"
+        expect(@item.errors.full_messages).to include 'Shipment prefecture must be other than 1'
       end
       # 8
       it '発送までの日数（shipment_day_id）が選択されていない場合（shipment_day_id = 1 の場合）、登録できない' do
         @item.shipment_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Shipment day must be other than 1"
+        expect(@item.errors.full_messages).to include 'Shipment day must be other than 1'
       end
       # 9
       it '価格（price）がない場合、登録できない' do
@@ -86,25 +86,25 @@ RSpec.describe Item, type: :model do
       it '商品名が40文字を超えた場合、登録できない' do
         @item.name = Faker::Lorem.characters(number: 41)
         @item.valid?
-        expect(@item.errors.full_messages).to include "Name is too long (maximum is 40 characters)"
+        expect(@item.errors.full_messages).to include 'Name is too long (maximum is 40 characters)'
       end
       # 11
       it '商品の説明が1,000文字を超えた場合、登録できない' do
         @item.explanation = Faker::Lorem.characters(number: 1001)
         @item.valid?
-        expect(@item.errors.full_messages).to include "Explanation is too long (maximum is 1000 characters)"
+        expect(@item.errors.full_messages).to include 'Explanation is too long (maximum is 1000 characters)'
       end
       # 12
       it 'priceの値が300円未満の場合、登録できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price must be greater than or equal to 300"
+        expect(@item.errors.full_messages).to include 'Price must be greater than or equal to 300'
       end
       # 13
       it 'priceの値が9,999,999円を超えた場合、登録できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price must be less than or equal to 9999999"
+        expect(@item.errors.full_messages).to include 'Price must be less than or equal to 9999999'
       end
     end
   end
