@@ -11,14 +11,25 @@ RSpec.describe Item, type: :model do
       it 'name, image, explanation, category_id, status_id, delivery_fee_id, shipment_prefecture_id, shipment_day_id, priceに正しくデータが入力された場合、正常に登録できる' do
         expect(@item).to be_valid
       end
+      # 2
       it '商品名が40文字以下の場合、登録できる' do
-        
+        @item.name = Faker::Lorem.characters(number: 40)
+        expect(@item).to be_valid
       end
+      # 3
       it '商品の説明が1,000文字以下の場合、登録できる' do
-        
+        @item.explanation = Faker::Lorem.characters(number: 1000)
+        expect(@item).to be_valid
       end
-      it 'priceの値が300円以上9,999,999以下の場合、登録できる' do
-        
+      # 4
+      it 'priceの値が300円以上の場合、登録できる' do
+        @item.price = 300
+        expect(@item).to be_valid
+      end
+      # 5
+      it 'priceの値が9,999,999以下の場合、登録できる' do
+        @item.price = 9999999
+        expect(@item).to be_valid
       end
     end
     
