@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit]
   before_action :direct, only: :edit
+  before_action :user_data, only: [:show, :edit, :update]
 
   def index
     @items = Item.order(created_at: :DESC)
@@ -20,15 +21,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = user_data()
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item = user_data()
   end
 
   def update
-    @item = Item.find(params[:id])
+    @item = user_data()
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -43,8 +44,13 @@ class ItemsController < ApplicationController
                                  :shipment_prefecture_id, :shipment_day_id, :price).merge(user_id: current_user.id)
   end
 
-  def direct
+  def user_data
     @item = Item.find(params[:id])
-    redirect_to root_path unless current_user.nickname == @item.user.nickname
   end
+
+  def direct
+    @item = user_data()
+    redirect_to root_path unless current_user.email == @item.user.email
+  end
+
 end
