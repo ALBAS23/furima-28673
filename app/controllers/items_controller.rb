@@ -22,15 +22,14 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = user_data()
+
   end
 
   def edit
-    @item = user_data()
+
   end
 
   def update
-    @item = user_data()
     if @item.update(item_params)
       redirect_to root_path
     else
