@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit]
-  before_action :direct,  only: :edit
+  before_action :direct, only: :edit
 
   def index
     @items = Item.order(created_at: :DESC)
@@ -45,8 +45,6 @@ class ItemsController < ApplicationController
 
   def direct
     @item = Item.find(params[:id])
-    unless current_user.nickname == @item.user.nickname
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_user.nickname == @item.user.nickname
   end
 end
