@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit]
-  before_action :direct, only: :edit
   before_action :user_data, only: [:show, :edit, :update]
+  before_action :direct, only: :edit
+  
 
   def index
     @items = Item.order(created_at: :DESC)
@@ -49,8 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def direct
-    @item = user_data()
-    redirect_to root_path unless current_user.email == @item.user.email
+    redirect_to root_path unless current_user.id == @item.user.id
   end
 
 end
