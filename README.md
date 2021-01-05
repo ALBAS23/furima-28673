@@ -17,7 +17,7 @@
 
 ### Association
 - has_many  :items
-- has_many  :purchases
+- has_many  :orders
 
 ## itemsテーブル（出品商品管理機能）
 
@@ -35,7 +35,7 @@
 
 ### Association
 - belongs_to  :user
-- has_one     :purchase
+- has_one     :order
 
 ## ordersテーブル（購入履歴管理機能）
 
