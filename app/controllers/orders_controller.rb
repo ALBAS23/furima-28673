@@ -1,12 +1,13 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: :index
+  before_action :item_information, only: [:index, :create]
+  before_action :top_redirect, only: :index
 
   def index
-    @item = Item.find(params[:item_id])
     @purchase_form = PurchaseForm.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_form = PurchaseForm.new(purchase_params)
     if @purchase_form.valid?
       pay_item()
@@ -30,6 +31,14 @@ class OrdersController < ApplicationController
         card: @purchase_form.token,
         currency: 'jpy'
       )
+  end
+
+  def item_information
+    @item = Item.find(params[:item_id])
+  end
+
+  def top_redirect
+     redirect_to root_path unless current_user.id == @item.user.id || @item.order 
   end
 
 end
