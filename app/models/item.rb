@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :shipment_day
   belongs_to :status
 
+  has_one :order, dependent: :delete
   belongs_to :user
 
   has_one_attached  :image
