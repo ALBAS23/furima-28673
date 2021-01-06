@@ -17,7 +17,7 @@
 
 ### Association
 - has_many  :items
-- has_many  :purchases
+- has_many  :orders
 
 ## itemsテーブル（出品商品管理機能）
 
@@ -35,9 +35,9 @@
 
 ### Association
 - belongs_to  :user
-- has_one     :purchase
+- has_one     :order
 
-## purchasesテーブル（購入履歴管理機能）
+## ordersテーブル（購入履歴管理機能）
 
 | Column               | Type           | Options                             |
 | -------------------- | -------------- | ----------------------------------- |
@@ -59,10 +59,10 @@
 | address                  | string         | null: false                         |
 | building                 | string         |                                     |
 | phone_number             | string         | null: false                         |
-| purchase                 | references     | null: false, foreign_key            |
+| order                    | references     | null: false, foreign_key            |
 
 ### Association
-- belongs_to  :purchase
+- belongs_to  :order
 
 
 This README would normally document whatever steps are necessary to get the
