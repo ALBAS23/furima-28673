@@ -6,8 +6,8 @@ class PurchaseForm
   
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
-    validates :municipality, :address, :token
-    validates :phone_number, format: { with: /\d{,11}/ }
+    validates :municipality, :address, :token, :user_id, :item_id
+    validates :phone_number, format: { with: /\A\d{10,11}\z/ }
   end
 
   validates :shipment_prefecture_id, numericality:  { other_than: 1 }
