@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many  :items 
+  has_many  :items
   has_many  :orders
 
   columns = [:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth]
